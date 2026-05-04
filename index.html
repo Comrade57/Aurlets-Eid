@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Aurlets Eid Letters 🌙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+background: linear-gradient(#fde2ff,#e0f7ff);
+font-family: 'Dancing Script', cursive;
+text-align:center;
+padding:40px;
+}
+
+h1{
+font-size:24px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.envelope{
+background:#fff;
+border-radius:20px;
+padding:25px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+cursor:pointer;
+transition:0.3s;
+}
+
+.envelope:hover{
+transform:scale(1.08);
+}
+
+.passwordBox{
+display:none;
+margin-top:30px;
+}
+
+input{
+padding:10px;
+border-radius:10px;
+border:none;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#ff9fd6;
+cursor:pointer;
+}
+
+#letter{
+display:none;
+max-width:700px;
+margin:40px auto;
+font-size:26px;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+line-height:1.6;
+text-align:left;
+white-space:pre-line;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🌙 Aurlets Eid Letters ✨</h1>
+<p>Choose your envelope</p>
+
+<div class="container">
+
+<div class="envelope" onclick="selectPerson('queenz')">💌 Queenz</div>
+<div class="envelope" onclick="selectPerson('peanut')">💌 Peanutliver</div>
+<div class="envelope" onclick="selectPerson('masab')">💌 Masab</div>
+<div class="envelope" onclick="selectPerson('ibbi')">💌 Ibbi</div>
+<div class="envelope" onclick="selectPerson('palindrome')">💌 Palindrome</div>
+<div class="envelope" onclick="selectPerson('brooks')">💌 Brooks</div>
+<div class="envelope" onclick="selectPerson('bipolar')">💌 Bipolar Disorder</div>
+<div class="envelope" onclick="selectPerson('maki')">💌 Maki</div>
+<div class="envelope" onclick="selectPerson('shino')">💌 Shino & Mustafa</div>
+<div class="envelope" onclick="selectPerson('malu')">💌 Malu & Lilly</div>
+<div class="envelope" onclick="selectPerson('hajji')">💌 Hajji</div>
+<div class="envelope" onclick="selectPerson('allama')">💌 Allama</div>
+<div class="envelope" onclick="selectPerson('cipher')">💌 Cipher</div>
+<div class="envelope" onclick="selectPerson('fari')">💌 Fari</div>
+<div class="envelope" onclick="selectPerson('kole')">💌 Kole</div>
+<div class="envelope" onclick="selectPerson('mahi')">💌 Mahi</div>
+<div class="envelope" onclick="selectPerson('merited')">💌 Merited</div>
+<div class="envelope" onclick="selectPerson('brzrkr')">💌 Brzrkr</div>
+
+</div>
+
+<div class="passwordBox" id="passwordBox">
+
+<p>Enter your Eid code ✨</p>
+
+<input id="passwordInput" placeholder="Enter code">
+<button onclick="checkPassword()">Open Envelope</button>
+
+</div>
+
+<div id="letter"></div>
+
+<script>
+
+let currentPerson=""
+
+const passwords={
+queenz:"1234",
+peanut:"1234",
+masab:"1234",
+ibbi:"1234",
+palindrome:"1234",
+brooks:"1234",
+bipolar:"1234",
+maki:"1234",
+shino:"1234",
+malu:"1234",
+hajji:"1234",
+allama:"1234",
+cipher:"1234",
+fari: "1234",
+kole:"1234",
+mahi:"1234",
+merited:"1234",
+brzrkr:"1234"
+}
+
+const letters={
+
+queenz:`Eid Mubarak Zaman 🌙
+
+— Your dur ka bhai, Ded inside`,
+
+peanut:`Eid Mubarak Peanutliver 🌙
+
+Once again, Eid Mubarak! & Thank you for everything!!
+
+— Your British Urdu`,
+
+masab:`Eid Mubarak Masab 🌙
+
+
+- Your dur ka dost, Ded inside`,
+
+ibbi:`Eid Mubarak Ibbi 🌙
+
+
+- Your nibba, Ded Inside`,
+
+palindrome:`Eid Mubarak Pali 🌙
+
+
+- Your twerk partner, Ded Inside`,
+
+brooks:`Eid Mubarak Brooks 🌙
+
+- Your Urdu student!`,
+
+bipolar:`Eid Mubarak Halali 🌙
+
+Once again, Eid Mubarak halali/bipolar/benam_aurat!
+
+- Ded Inside`,
+
+maki:`Eid Mubarak Maki 🌙
+
+
+- Your billi ka business plan karne wala, Ded Inside`,
+
+shino:`Eid Mubarak Shino & Mustafa 🌙
+
+
+Once again, Eid Mubarak yaarz!
+
+- Ded Inside`,
+
+malu:`Eid Mubarak Malu & Lilly 🌙
+
+
+Once again, Eid Mubarak to both of you! Enjoy it to the fullets!!
+
+- Ded Inside`,
+
+hajji:`Eid Mubarak Hajji 🌙
+
+
+Once again, Eid Mubarak!
+
+- Ded Inside`,
+
+allama:`Eid Mubarak Allama 🌙
+
+Anyways.. Once again, Eid Mubarak Allama!
+
+- Ded Inside`,
+
+cipher:`Eid Mubarak Cipher 🌙
+
+
+- Your fan, Ded Inside`,
+
+fari:`Eid Mubarak Fari 🌙
+
+Once again, Eid Mubarak!
+
+- Princess Fardini`,
+
+kole:`Eid Mubarak Kole 🌙
+
+
+Anyways.. Once again, Eid Mubarak Kole!
+
+- Ded Inside`,
+
+mahi:`Eid Mubarak Mahi 🌙
+
+Once again, Eid Mubarak Mahi!
+
+- Ded Inside`,
+
+merited:`Eid Mubarak Aayan 🌙
+
+
+- Ded Inside`,
+
+brzrkr:`Eid Mubarak Zinger 🌙
+
+Once again, Eid Mubarak Mr. "Gonna be Admin"
+
+- Ded Inside`
+  
+}
+
+function selectPerson(person){
+
+currentPerson=person
+document.getElementById("passwordBox").style.display="block"
+document.getElementById("bgMusic").play()
+
+}
+
+function checkPassword(){
+
+let input=document.getElementById("passwordInput").value
+
+if(input===passwords[currentPerson]){
+
+let letterBox=document.getElementById("letter")
+letterBox.style.display="block"
+letterBox.innerText=letters[currentPerson]
+
+}else{
+
+alert("Wrong code 👀")
+
+}
+
+}
+
+function startScratch(){
+
+document.getElementById("scratchCanvas").style.display="block"
+document.getElementById("letter").style.display="block"
+
+document.getElementById("letter").innerText=letters[currentPerson]
+
+let canvas=document.getElementById("scratchCanvas")
+let ctx=canvas.getContext("2d")
+
+ctx.fillStyle="#bbbbbb"
+ctx.fillRect(0,0,600,300)
+
+canvas.addEventListener("mousemove",function(e){
+
+let rect=canvas.getBoundingClientRect()
+
+let x=e.clientX-rect.left
+let y=e.clientY-rect.top
+
+ctx.globalCompositeOperation="destination-out"
+
+ctx.beginPath()
+ctx.arc(x,y,20,0,Math.PI*2)
+ctx.fill()
+
+})
+
+}
+
+</script>
+
+<audio id="bgMusic" loop>
+  <source src="Kabira_Song.mp3" type="audio/mpeg">
+</audio>
+  
+</body>
+</html>
